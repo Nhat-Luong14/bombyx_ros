@@ -82,7 +82,7 @@ def get_hit_rate(xs, ys, pos, resolution=0.000001):
 
     lam = get_length_constant()     # calc lambda
     scale_factor = config.emission_rate / np.log(lam/config.searcher_size)  # calc scale factor
-    exp_term = np.exp((config.wind/(2*config.diffusivity))*-dy)  # calc exponential term
+    exp_term = np.exp((config.wind/(2*config.diffusivity))*dx)  # calc exponential term
 
     # calc bessel term
     abs_dist = (dx**2 + dy**2) ** 0.5

@@ -124,22 +124,27 @@ def planning(hit_log, pos):
         direction = ["stop", "forward", "backward", "left", "right"]
         print(delta_s_expecteds)
         index = np.argmin(delta_s_expecteds)
-        print(index)
-        print(direction[index])
         # next_pos = moves[index]   # choose move that decreases p_source entropy the most
         traj.append(new_pos)
 
         
         ser1.write(str(index).encode())
         print("sent cmd")
+        print("previous pos: ", str(new_pos))
+        print("expected pos: ", str(moves[index]))
+        print(direction[index])
+
+        
         while not (ser1.in_waiting > 0):  # exist message from Arduino in the serial buffer
             pass
         print("stopped")   
 
-        time.sleep(4)   # wait 1s after moving for gas detection at new location
+        time.sleep(6)   # wait 1s after moving for gas detection at new location
         log = list(hit_log)
         h=1 if('h' in log) else 0
-        print(h)
+        print("hit: "  + str(h))
+        
+
         
     else:
         src_found = False
@@ -154,14 +159,14 @@ def planning(hit_log, pos):
 
 if __name__ == '__main__':
     # establish connection to Ardunio
-    ser1 = serial.Serial('/dev/ttyACM0', 115200, timeout=1)     #Arduino Uno for Gas sensor 
+    ser1 = serial.Serial('/dev/ttyACM1', 115200, timeout=1)     #Arduino Uno for Gas sensor 
     ser2 = serial.Serial('/dev/ttyUSB0', 115200, timeout=1)     #Arduino Mega for Motors
     time.sleep(1)
     ser1.flushInput()
     ser2.flushInput()
                     
     pos = deque([(0,0)], maxlen=100)    # use dequeue to share the positon for thread using
-    hit_log = deque([], maxlen=20)      # use dequeue to share the log to diffirent threads to read & write
+    hit_log = deque([], maxlen=50)      # use dequeue to share the log to diffirent threads to read & write
     
     location_listener()              # ros node to sibcribe to SLAM to get position data
 
