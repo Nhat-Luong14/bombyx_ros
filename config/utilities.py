@@ -145,7 +145,7 @@ Get the 5 possible moves from a position given a constant speed.
 def get_moves(pos, step):    
     moves = []
     # ["stop", "forward", "backward", "left", "right"]
-    for dx, dy in [(0, 0), (step, 0), (-step, 0), (0, step), (0, -step)]:
+    for dx, dy in [(0, 0), (step, 0), (-step, 0), (0, -step), (0, step)]:
         x = pos[0] + dx
         y = pos[1] + dy
         moves.append((x, y))
