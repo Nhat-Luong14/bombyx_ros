@@ -23,8 +23,8 @@ grid        = (16, 13)
 x_bounds    = [0.0, 3.0]
 y_bounds    = [-1.2, 1.2]
 
-max_dur     = 200  #secound
-dt          = 4    #second
+max_dur     = 120  #secound
+dt          = 5    #second
 wind        = 0.6  #m/s
 p_lifetime  = 100  #second
 diffusivity = 0.05 #(m^2/s) ????????????????????
