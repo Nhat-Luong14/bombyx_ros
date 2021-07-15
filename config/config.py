@@ -19,16 +19,16 @@
 
 src_pos     = (0.0, 2.7)
 src_radius  = 0.4
-grid        = (51, 31)
+grid        = (16, 13)
 x_bounds    = [0.0, 3.0]
-y_bounds    = [-1.1, 1.1]
+y_bounds    = [-1.2, 1.2]
 
-max_dur     = 200 #secound
-dt          = 4   #second
-wind        = 0.5 #m/s
-p_lifetime  = 100 #second
-diffusivity = 0.05     #(m^2/s) ????????????????????
-step_size   = 0.5 #m
+max_dur     = 200  #secound
+dt          = 4    #second
+wind        = 0.6  #m/s
+p_lifetime  = 100  #second
+diffusivity = 0.05 #(m^2/s) ????????????????????
+step_size   = 0.2  #m
 
 searcher_size = 0.003 #m
-emission_rate = 1 #Hz
+emission_rate = 100 #Hz
